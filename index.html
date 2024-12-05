@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>For You, My Strength</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to bottom, #ffdee9, #b5fffc);
+      color: #333;
+    }
+    header {
+      text-align: center;
+      padding: 20px;
+      background: #ff758c;
+      color: white;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2.5em;
+    }
+    section {
+      margin: 20px auto;
+      max-width: 800px;
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+    section h2 {
+      color: #ff758c;
+      margin-bottom: 10px;
+    }
+    .encouragement {
+      font-size: 1.2em;
+      text-align: center;
+      margin: 20px 0;
+      color: #333;
+    }
+    #gallery img {
+      width: 150px;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin: 5px;
+    }
+    #gallery {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    footer {
+      text-align: center;
+      padding: 10px;
+      background: #ff758c;
+      color: white;
+    }
+    button {
+      display: block;
+      margin: 10px auto;
+      padding: 10px 20px;
+      background: #ff758c;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #ff4f72;
+    }
+    textarea {
+      width: 100%;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      padding: 10px;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>For You, My dear Tasnim</h1>
+  <p>A little corner of the internet just for you—a reminder that you are loved and cherished.</p>
+</header>
+
+<section>
+  <h2>Your Achievements</h2>
+  <p>Remember all the amazing things you’ve done:</p>
+  <ul>
+    <li>Loved me</li>
+    <li>Made your mother proud</li>
+    <li>Showed me why I should never give up</li>
+    <li>And many more to be listed</>
+  </ul>
+</section>
+
+<section>
+  <h2>Words of Encouragement</h2>
+  <p class="encouragement" id="quote">"You are stronger than you think, and every day you’re getting closer to your goals."</p>
+  <button onclick="newQuote()">Get a New Quote</button>
+</section>
+
+<section>
+  <h2>Relax & Recharge</h2>
+  <p>Take a moment to reflect or relax:</p>
+
+  <!-- Gratitude Journal -->
+  <h3>Gratitude Journal</h3>
+  <p>What are you grateful for today? Write it down here:</p>
+  <textarea id="journal" placeholder="I am grateful for..." rows="5"></textarea>
+  <button onclick="saveGratitude()">Save My Thoughts</button>
+  <p id="savedMessage" style="color: green; display: none;">Your entry has been saved!</p>
+
+  <!-- Nature Sounds -->
+  <h3>Calming Nature Sounds</h3>
+  <p>Click to play soothing sounds and unwind:</p>
+  <button onclick="playNatureSounds()">Play Nature Sounds</button>
+  <button onclick="stopNatureSounds()">Stop</button>
+  <audio id="natureAudio" loop>
+    <source src="C:\Users\Lenovo\Downloads\calming-rain-257596.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+</section>
+
+<section>
+  <h2>Memory Gallery</h2>
+  <p>Little me</p>
+  
+  <!-- Preloaded Image Gallery -->
+  <div id="gallery">
+    <img src="E:\Images\IMG_20240829_125614.jpg" alt="Memory 1">
+    <img src="E:\Images\IMG20240829121933.jpg" alt="Memory 2">
+    <img src="E:\Images\IMG20240829121913.jpg" alt="Memory 3">
+    <img src="E:\Images\IMG20240829122632.jpg" alt="Memory 4">
+    <img src="E:\Images\IMG_20230429_020739.jpg" alt="Memory 5">
+  </div>
+</section>
+
+<footer>
+  <p>Made with love by Faraj for the most amazing person I know.</p>
+</footer>
+
+<script>
+  // Quotes Functionality
+  const quotes = [
+    "You are stronger than you think, and every day you’re getting closer to your goals.",
+    "Even on tough days, remember you’ve conquered challenges before, and you will again.",
+    "Every challenge is just another step toward your greatness.",
+    "You have the power to create the life you want, one step at a time.",
+    "You’ve already overcome so much, and this is just the beginning.",
+    "I believe in you more than words can express, always.",
+    "I admire your strength and determination—you're unstoppable.",
+    "You are loved, valued, and capable of amazing things."
+  ];
+
+  function newQuote() {
+    const randomIndex = Math.floor(Math.random() * quotes.length);
+    document.getElementById("quote").textContent = quotes[randomIndex];
+  }
+
+  // Gratitude Journal Save Functionality
+  function saveGratitude() {
+    const journal = document.getElementById("journal").value;
+    if (journal.trim()) {
+      localStorage.setItem("gratitudeEntry", journal);
+      document.getElementById("savedMessage").style.display = "block";
+      setTimeout(() => {
+        document.getElementById("savedMessage").style.display = "none";
+      }, 3000);
+    }
+  }
+
+  // Nature Sounds Functionality
+  const natureAudio = document.getElementById("natureAudio");
+
+  function playNatureSounds() {
+    natureAudio.play();
+  }
+
+  function stopNatureSounds() {
+    natureAudio.pause();
+    natureAudio.currentTime = 0; // Reset playback
+  }
+</script>
+
+</body>
+</html>
